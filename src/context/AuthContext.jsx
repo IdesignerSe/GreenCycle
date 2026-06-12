@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import AuthProvider from "./context/AuthContext";
 
 export const AuthContext = createContext();
 
