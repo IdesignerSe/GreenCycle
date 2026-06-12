@@ -1,0 +1,17 @@
+:root {
+  --green: #81C784;
+  --green-dark: #4CAF50;
+  --white: #FFFFFF;
+  --offwhite: #F7F7F7;
+  --gray-900: #1A1A1A;
+  --gray-700: #4A4A4A;
+  --gray-300: #DADADA;
+  --gray-100: #F0F0F0;
+
+  --reserved: #FBC02D;
+  --free: #64B5F6;
+
+  --radius: 12px;
+  --shadow: 0 2px 6px rgba(0,0,0,0.08);
+  --shadow-hover: 0 4px 12px rgba(0,0,0,0.12);
+}
