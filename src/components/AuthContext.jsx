@@ -1,3 +1,4 @@
+// src/context/AuthContext.jsx
 import { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
@@ -5,7 +6,7 @@ export const AuthContext = createContext();
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  // Load user from localStorage
+  // Load user from localStorage on first render
   useEffect(() => {
     const stored = localStorage.getItem("greencycle-user");
     if (stored) {
@@ -13,7 +14,7 @@ export default function AuthProvider({ children }) {
     }
   }, []);
 
-  // Save user to localStorage
+  // Save user to localStorage whenever it changes
   useEffect(() => {
     if (user) {
       localStorage.setItem("greencycle-user", JSON.stringify(user));
