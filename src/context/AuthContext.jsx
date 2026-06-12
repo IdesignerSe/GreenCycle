@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-import AuthProvider from "./context/AuthContext";
 
 export const AuthContext = createContext();
 
@@ -8,7 +7,9 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     const stored = localStorage.getItem("greencycle-user");
-    if (stored) setUser(JSON.parse(stored));
+    if (stored) {
+      setUser(JSON.parse(stored));
+    }
   }, []);
 
   useEffect(() => {
@@ -17,7 +18,9 @@ export default function AuthProvider({ children }) {
     }
   }, [user]);
 
-  const login = (alias, email) => setUser({ alias, email });
+  const login = (alias, email) => {
+    setUser({ alias, email });
+  };
 
   const logout = () => {
     setUser(null);

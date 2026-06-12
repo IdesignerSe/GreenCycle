@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import productsData from "../data/products.json";
 
+
 export const ProductsContext = createContext();
 
 export default function ProductsProvider({ children }) {
