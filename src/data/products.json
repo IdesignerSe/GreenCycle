@@ -1,0 +1,165 @@
+[
+  {
+    "id": "1",
+    "title": "Wooden Coffee Table",
+    "description": "Solid pine coffee table with natural wear. Very sturdy.",
+    "price": 150,
+    "free": false,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "2",
+    "title": "Floor Lamp",
+    "description": "Tall white floor lamp, warm light, Scandinavian style.",
+    "price": 120,
+    "free": false,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "3",
+    "title": "Bookshelf (White)",
+    "description": "Simple IKEA-style bookshelf with 4 shelves.",
+    "price": 180,
+    "free": false,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "4",
+    "title": "Office Chair",
+    "description": "Comfortable office chair with adjustable height.",
+    "price": 220,
+    "free": false,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "5",
+    "title": "Ceramic Vase",
+    "description": "Handmade ceramic vase in beige tones.",
+    "price": 60,
+    "free": false,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "6",
+    "title": "Wall Mirror",
+    "description": "Round mirror with wooden frame.",
+    "price": 140,
+    "free": false,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "7",
+    "title": "Kitchen Chair",
+    "description": "Single wooden chair, perfect for extra seating.",
+    "price": 80,
+    "free": false,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "8",
+    "title": "Bluetooth Speaker",
+    "description": "Small portable speaker, works perfectly.",
+    "price": 90,
+    "free": false,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "9",
+    "title": "Small Rug",
+    "description": "Soft rug, light grey, 120x80 cm.",
+    "price": 100,
+    "free": false,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "10",
+    "title": "Table Lamp",
+    "description": "Minimalist bedside lamp with warm LED bulb.",
+    "price": 70,
+    "free": false,
+    "reserved": false,
+    "image": ""
+  },
+
+  {
+    "id": "11",
+    "title": "Glass Storage Jars (Set of 3)",
+    "description": "Perfect for kitchen storage. Clean and unused.",
+    "price": 0,
+    "free": true,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "12",
+    "title": "Decorative Plant Pot",
+    "description": "Small ceramic pot, no cracks.",
+    "price": 0,
+    "free": true,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "13",
+    "title": "Notebook Bundle",
+    "description": "Three unused notebooks, mixed colors.",
+    "price": 0,
+    "free": true,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "14",
+    "title": "Picture Frame",
+    "description": "Simple wooden frame, fits A4.",
+    "price": 0,
+    "free": true,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "15",
+    "title": "Glass Bowl",
+    "description": "Clear glass bowl, perfect for serving.",
+    "price": 0,
+    "free": true,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "16",
+    "title": "Candle Holder",
+    "description": "Metal candle holder, Scandinavian style.",
+    "price": 0,
+    "free": true,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "17",
+    "title": "Magazine Stack",
+    "description": "Bundle of interior design magazines.",
+    "price": 0,
+    "free": true,
+    "reserved": false,
+    "image": ""
+  },
+  {
+    "id": "18",
+    "title": "Kitchen Utensils Set",
+    "description": "Used but clean utensils: spatula, whisk, ladle.",
+    "price": 0,
+    "free": true,
+    "reserved": false,
+    "image": ""
+  }
+]
