@@ -1,64 +1,41 @@
-import { Link, NavLink } from "react-router-dom";
+// src/components/Navbar.jsx
+import { NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 export default function Navbar() {
+  const { user, logout } = useAuth();
+
   return (
-    <nav
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "16px 24px",
-        background: "white",
-        boxShadow: "var(--shadow)"
-      }}
-    >
-      {/* Logo */}
-      <Link
-        to="/"
-        style={{
-          fontSize: "20px",
-          fontWeight: "700",
-          color: "var(--green)",
-          textDecoration: "none"
-        }}
-      >
-        GreenCycle
-      </Link>
-
-      {/* Menu */}
-      <div style={{ display: "flex", gap: "24px" }}>
-        <NavLink
-          to="/"
-          style={({ isActive }) => ({
-            color: isActive ? "var(--green)" : "var(--gray-900)",
-            textDecoration: "none",
-            fontWeight: "500"
-          })}
-        >
-          Home
+    <nav className="navbar">
+      <div className="nav-left">
+        <NavLink to="/" className="logo">
+          GreenCycle
         </NavLink>
 
-        <NavLink
-          to="/takeaway"
-          style={({ isActive }) => ({
-            color: isActive ? "var(--green)" : "var(--gray-900)",
-            textDecoration: "none",
-            fontWeight: "500"
-          })}
-        >
-          Take‑Away
+        <NavLink to="/takeaway" className="nav-link">
+          TakeAway
         </NavLink>
 
-        <NavLink
-          to="/secondhand"
-          style={({ isActive }) => ({
-            color: isActive ? "var(--green)" : "var(--gray-900)",
-            textDecoration: "none",
-            fontWeight: "500"
-          })}
-        >
-          Second‑Hand
+        <NavLink to="/secondhand" className="nav-link">
+          SecondHand
         </NavLink>
+      </div>
+
+      <div className="nav-right">
+        {!user && (
+          <NavLink to="/login" className="nav-link login-btn">
+            Login
+          </NavLink>
+        )}
+
+        {user && (
+          <div className="user-area">
+            <span className="user-alias">Hi, {user.alias}</span>
+            <button className="logout-btn" onClick={logout}>
+              Logout
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   );
