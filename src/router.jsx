@@ -1,4 +1,3 @@
-// src/router.jsx
 import App from "./App";
 import ProductsProvider from "./context/ProductsContext";
 
