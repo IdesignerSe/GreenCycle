@@ -9,7 +9,7 @@ export default function Home() {
       <HeroBanner />
       <HomeIntro />
       <ProductGrid />
-      <Footer />
+
     </>
   );
 }
