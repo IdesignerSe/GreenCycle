@@ -1,9 +1,15 @@
 // src/components/Navbar.jsx
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/"); // redirect to home
+  };
 
   return (
     <nav className="navbar">
@@ -31,7 +37,7 @@ export default function Navbar() {
         {user && (
           <div className="user-area">
             <span className="user-alias">Hi, {user.alias}</span>
-            <button className="logout-btn" onClick={logout}>
+            <button className="logout-btn" onClick={handleLogout}>
               Logout
             </button>
           </div>
