@@ -20,8 +20,14 @@ export default function App() {
 
       <main style={{ padding: "24px" }}>
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
 
+          {/* ProductDetails is now PUBLIC */}
+          <Route path="/product/:id" element={<ProductDetails />} />
+
+          {/* Protected Routes */}
           <Route
             path="/takeaway"
             element={
@@ -39,17 +45,6 @@ export default function App() {
               </PrivateRoute>
             }
           />
-
-          <Route
-            path="/product/:id"
-            element={
-              <PrivateRoute>
-                <ProductDetails />
-              </PrivateRoute>
-            }
-          />
-
-          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
 

@@ -1,90 +1,69 @@
 import { useParams } from "react-router-dom";
-import useProducts from "../hooks/useProducts";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { useProducts } from "../context/ProductsContext";
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const { getProduct } = useProducts();
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { products } = useProducts();
 
-  const item = getProduct(id);
+  // Find the product by ID
+  const item = products.find((p) => p.id === Number(id));
 
   if (!item) {
-    return (
-      <p style={{ textAlign: "center", marginTop: "40px", color: "var(--gray-700)" }}>
-        Item not found.
-      </p>
-    );
+    return <p>Product not found.</p>;
   }
 
+  // Handle reserve button click
+  const handleReserve = () => {
+    if (!user) {
+      // Redirect to login with return path
+      navigate(`/login?redirect=/product/${id}`);
+      return;
+    }
+
+    // TODO: Add real reservation logic here
+    console.log("Reserved:", item.title);
+    alert(`You reserved: ${item.title}`);
+  };
+
   return (
-    <section
-      style={{
-        maxWidth: "700px",
-        margin: "0 auto",
-        padding: "24px",
-        background: "white",
-        borderRadius: "var(--radius)",
-        boxShadow: "var(--shadow)"
-      }}
-    >
-      {/* Image */}
-      <img
-        src={item.image || "https://via.placeholder.com/600x400?text=No+Image"}
-        alt={item.title}
-        style={{
-          width: "100%",
-          borderRadius: "var(--radius)",
-          marginBottom: "20px",
-          objectFit: "cover"
-        }}
-      />
+    <section className="product-details">
+      <div className="details-card">
+        <img
+          src={item.image}
+          alt={item.title}
+          className="details-image"
+        />
 
-      {/* Title */}
-      <h2 style={{ color: "var(--gray-900)", marginBottom: "8px" }}>
-        {item.title}
-      </h2>
+        <div className="details-info">
+          <h2>{item.title}</h2>
+          <p className="details-description">{item.description}</p>
 
-      {/* Description */}
-      <p style={{ color: "var(--gray-700)", marginBottom: "16px" }}>
-        {item.description}
-      </p>
+          <p className="details-meta">
+            <strong>Category:</strong> {item.category}
+          </p>
 
-      {/* Price or Free */}
-      {item.free ? (
-        <p style={{ color: "var(--free)", fontWeight: "600", fontSize: "18px" }}>
-          FREE
-        </p>
-      ) : (
-        <p style={{ color: "var(--green)", fontWeight: "600", fontSize: "18px" }}>
-          {item.price} kr
-        </p>
-      )}
+          <p className="details-meta">
+            <strong>Status:</strong>{" "}
+            {item.reserved ? "Already Reserved" : item.free ? "Free" : "Available"}
+          </p>
 
-      {/* Reserved Badge */}
-      {item.reserved && (
-        <p style={{ color: "var(--reserved)", fontWeight: "600", marginTop: "8px" }}>
-          RESERVED
-        </p>
-      )}
-
-      {/* CTA Button */}
-      <button
-        style={{
-          marginTop: "24px",
-          width: "100%",
-          padding: "12px",
-          background: "var(--green)",
-          color: "white",
-          border: "none",
-          borderRadius: "8px",
-          fontSize: "16px",
-          fontWeight: "500",
-          cursor: "pointer",
-          boxShadow: "var(--shadow)"
-        }}
-        disabled={item.reserved}
-      >
-        {item.free ? "Take Away" : item.reserved ? "Already Reserved" : "Reserve Item"}
-      </button>
+          <button
+            onClick={handleReserve}
+            disabled={item.reserved}
+            className="reserve-btn"
+          >
+            {item.reserved
+              ? "Already Reserved"
+              : item.free
+              ? "Take Away"
+              : "Reserve Item"}
+          </button>
+        </div>
+      </div>
     </section>
   );
 }
