@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import TakeAway from "./pages/TakeAway";
 import SecondHand from "./pages/SecondHand";
 import ProductDetails from "./pages/ProductDetails";
+import Login from "./pages/Login";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/takeaway" element={<TakeAway />} />
           <Route path="/secondhand" element={<SecondHand />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
 
