@@ -20,7 +20,13 @@ export default function Login() {
     }
 
     login(alias, email);
-    navigate("/"); // redirect after login
+
+    // Read redirect parameter from URL
+    const params = new URLSearchParams(window.location.search);
+    const redirect = params.get("redirect");
+
+    // Go back to the page user originally wanted
+    navigate(redirect || "/");
   };
 
   return (
