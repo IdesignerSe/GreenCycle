@@ -78,6 +78,9 @@ body {
   padding: var(--space-6) var(--space-10);
   background: var(--white);
   border-bottom: 1px solid var(--gray-200);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .nav-left,
@@ -95,12 +98,17 @@ body {
 }
 
 .nav-link {
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-sm);
   text-decoration: none;
   color: var(--gray-900);
   font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.nav-link.active {
+.nav-link:hover,
+.nav-link:active {
+  background: var(--gray-100);
   color: var(--green-700);
 }
 
@@ -234,10 +242,11 @@ body {
   border-radius: var(--radius-lg);
   padding: var(--space-8);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.product-card:hover {
+.product-card:hover,
+.product-card:active {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
@@ -283,7 +292,8 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
-.reserve-btn:hover:not(:disabled) {
+.reserve-btn:hover:not(:disabled),
+.reserve-btn:active:not(:disabled) {
   background: var(--green-300);
   color: var(--green-700);
   transform: translateY(-2px);
@@ -342,7 +352,7 @@ body {
   overflow-x: auto;
   padding-bottom: var(--space-4);
   scroll-snap-type: x mandatory;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .carousel-card {
@@ -351,7 +361,14 @@ body {
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   scroll-snap-align: start;
+}
+
+.carousel-card:hover,
+.carousel-card:active {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .carousel-card img {
@@ -382,11 +399,13 @@ body {
   border-radius: var(--radius-lg);
   padding: var(--space-8);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.article-card:hover {
+.article-card:hover,
+.article-card:active {
   transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .article-card img {
@@ -416,7 +435,7 @@ body {
 
 .article-detail-content {
   font-size: var(--font-base);
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--gray-700);
   white-space: pre-line;
 }
