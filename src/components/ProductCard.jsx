@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useProducts from "../hooks/useProducts";
 import useAuth from "../hooks/useAuth";
 
-export default function ProductCard({ id, title, image, price, free, reserved }) {
+export default function ProductCard({ item }) {
   const navigate = useNavigate();
   const { updateProduct } = useProducts();
   const { user } = useAuth();
@@ -14,45 +14,44 @@ export default function ProductCard({ id, title, image, price, free, reserved })
       return;
     }
 
-    updateProduct(id, {
+    updateProduct(item.id, {
       reserved: true,
       reservedBy: user.alias,
     });
 
-    navigate(`/checkout/${id}`);
+    navigate(`/checkout/${item.id}`);
   };
 
   return (
     <div className="product-card">
-      <Link to={`/product/${id}`}>
+      <Link to={`/product/${item.id}`}>
         <img
-          src={`${import.meta.env.BASE_URL}images/${image}`}
-          alt={title}
+          src={`${import.meta.env.BASE_URL}images/${item.image}`}
+          alt={item.title}
           className="product-image"
         />
       </Link>
 
-      <h3 className="product-title">{title}</h3>
+      <h3 className="product-title">{item.title}</h3>
 
-      {free ? (
+      {item.free ? (
         <p className="product-price free">FREE</p>
       ) : (
-        <p className="product-price">{price} kr</p>
+        <p className="product-price">{item.price} kr</p>
       )}
 
-      {reserved && <p className="reserved-badge">RESERVED</p>}
+      {item.reserved && <p className="reserved-badge">RESERVED</p>}
 
-      {/* ⭐ Reserve Button */}
       <button
         onClick={handleReserve}
-        disabled={reserved}
+        disabled={item.reserved}
         className="reserve-btn"
       >
-        {free
-          ? reserved
+        {item.free
+          ? item.reserved
             ? "Already Reserved"
             : "Take Away"
-          : reserved
+          : item.reserved
             ? "Already Reserved"
             : "Reserve"}
       </button>
