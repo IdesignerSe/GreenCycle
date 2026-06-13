@@ -1,9 +1,9 @@
 import ProductCard from "./ProductCard";
 
-export default function ProductGrid({ items }) {
-  if (!items || items.length === 0) {
+export default function ProductGrid({ items = [] }) {
+  if (!items.length) {
     return (
-      <p style={{ textAlign: "center", color: "var(--gray-700)", marginTop: "24px" }}>
+      <p style={{ color: "var(--gray-700)", padding: "16px" }}>
         No items available.
       </p>
     );
@@ -15,7 +15,6 @@ export default function ProductGrid({ items }) {
         display: "grid",
         gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
         gap: "24px",
-        marginTop: "24px",
       }}
     >
       {items.map((item) => (
