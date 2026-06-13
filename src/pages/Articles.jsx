@@ -1,8 +1,24 @@
+import { articles } from "../data/articles";
+
 export default function Articles() {
+  const base = import.meta.env.BASE_URL;
+
   return (
-    <section style={{ padding: "24px" }}>
+    <section className="articles-page">
       <h1>Articles & Tips</h1>
-      <p>More content coming soon...</p>
+
+      <div className="articles-grid">
+        {articles.map(a => (
+          <div key={a.id} className="article-card">
+            <img
+              src={`${base}images/${a.image}`}
+              alt={a.title}
+            />
+            <h3>{a.title}</h3>
+            <p>{a.description}</p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
