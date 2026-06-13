@@ -7,7 +7,7 @@
     "price": 150,
     "free": false,
     "reserved": false,
-    "image": "table_lamp.jpg"
+    "image": "table.jpg"
   },
   {
     "id": "2",
@@ -21,7 +21,7 @@
   },
   {
     "id": "3",
-    "name": "Bookshelf (White)",
+    "name": "bookshelf",
     "title": "Bookshelf (White)",
     "description": "Simple IKEA-style bookshelf with 4 shelves.",
     "price": 180,
@@ -37,7 +37,7 @@
     "price": 220,
     "free": false,
     "reserved": false,
-    "image": "office_chair.jpg"
+    "image": "chair1.jpg"
   },
   {
     "id": "5",
@@ -47,7 +47,7 @@
     "price": 60,
     "free": false,
     "reserved": false,
-    "image": "ceramic_vase.jpg"
+    "image": "vase.jpg"
   },
   {
     "id": "6",
@@ -57,7 +57,7 @@
     "price": 140,
     "free": false,
     "reserved": false,
-    "image": "wall_mirror.jpg"
+    "image": "mirror.jpg"
   },
   {
     "id": "7",
@@ -67,7 +67,7 @@
     "price": 80,
     "free": false,
     "reserved": false,
-    "image": "kitchen_chair.jpg"
+    "image": "chair2.jpg"
   },
   {
     "id": "8",
@@ -77,7 +77,7 @@
     "price": 90,
     "free": false,
     "reserved": false,
-    "image": "bluetooth_speaker.jpg"
+    "image": "speaker.jpg"
   },
   {
     "id": "9",
@@ -87,7 +87,7 @@
     "price": 100,
     "free": false,
     "reserved": false,
-    "image": "small_rug.jpg"
+    "image": "rug.jpg"
   },
   {
     "id": "10",
@@ -97,7 +97,7 @@
     "price": 70,
     "free": false,
     "reserved": false,
-    "image": "table_lamp.jpg"
+    "image": "lamp2.jpg"
   },
   {
     "id": "11",
@@ -107,7 +107,7 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": "glass_jars.jpg"
+    "image": "storage.jpg"
   },
   {
     "id": "12",
@@ -117,7 +117,7 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": "plant_pot.jpg"
+    "image": "plant.jpg"
   },
   {
     "id": "13",
@@ -127,7 +127,7 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": "notebook_bundle.jpg"
+    "image": "book.jpg"
   },
   {
     "id": "14",
@@ -147,17 +147,17 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": "glass_bowl.jpg"
+    "image": "bowl.jpg"
   },
   {
     "id": "16",
-    "name": "Candle Holder",
+    "name": "Candle",
     "title": "Candle Holder",
     "description": "Metal candle holder, Scandinavian style.",
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": "candle_holder.jpg"
+    "image": "candle.jpg"
   },
   {
     "id": "17",
@@ -177,6 +177,6 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": "kitchen_utensils.jpg"
+    "image": "utensils.jpg"
   }
 ]
