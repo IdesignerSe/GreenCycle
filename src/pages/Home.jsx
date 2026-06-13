@@ -1,6 +1,6 @@
 import HeroBanner from "../components/HeroBanner";
 import HomeIntro from "../components/HomeIntro";
-import ProductGrid from "../components/ProductGrid";
+import ArticleCarousel from "../components/ArticleCarousel";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <HeroBanner />
       <HomeIntro />
-      <ProductGrid />
+      <ArticleCarousel />
 
     </>
   );

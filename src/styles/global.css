@@ -316,3 +316,55 @@ body {
   color: var(--green);
   font-weight: 600;
 }
+.article-carousel {
+  margin-top: 40px;
+}
+
+.article-carousel h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border-radius: 4px;
+}
+
+.carousel-card {
+  min-width: 240px;
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  scroll-snap-align: start;
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.carousel-card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.carousel-card p {
+  font-size: 14px;
+  color: #555;
+}
