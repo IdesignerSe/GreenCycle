@@ -1,4 +1,5 @@
 export default function ArticleCarousel() {
+  const base = import.meta.env.BASE_URL;
   const articles = [
     {
       id: 1,
@@ -28,7 +29,7 @@ export default function ArticleCarousel() {
         {articles.map(a => (
           <div key={a.id} className="carousel-card">
             <img
-              src={`${import.meta.env.BASE_URL}images/${a.image}`}
+              src={`${base}images/${a.image}`}
               alt={a.title}
             />
             <h3>{a.title}</h3>
