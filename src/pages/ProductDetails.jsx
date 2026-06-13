@@ -34,9 +34,7 @@ export default function ProductDetails() {
     );
   }
 
-  // -----------------------------
-  // Reserve Button Logic
-  // -----------------------------
+  // Reserve logic
   const handleReserve = () => {
     if (!user) {
       alert("You must be logged in to reserve an item.");
