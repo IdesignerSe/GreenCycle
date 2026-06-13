@@ -13,7 +13,7 @@ export default function SecondHand() {
 
       <div className="product-grid">
         {paidItems.map(item => (
-          <ProductCard key={item.id} product={item} />
+          <ProductCard key={item.id} item={item} />
         ))}
       </div>
     </div>

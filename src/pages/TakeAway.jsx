@@ -13,7 +13,7 @@ export default function TakeAway() {
 
       <div className="product-grid">
         {freeItems.map(item => (
-          <ProductCard key={item.id} product={item} />
+          <ProductCard key={item.id} item={item} />
         ))}
       </div>
     </div>
