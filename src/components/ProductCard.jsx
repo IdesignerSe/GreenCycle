@@ -14,7 +14,7 @@ export default function ProductCard({ item }) {
     >
       {/* Image */}
       <img
-        src={item.image || "https://via.placeholder.com/300x200?text=No+Image"}
+        src={`${import.meta.env.BASE_URL}images/${item.image}`}
         alt={item.title}
         style={{
           width: "100%",
@@ -37,8 +37,6 @@ export default function ProductCard({ item }) {
           {item.price} kr
         </span>
       )}
-
-      <br />
 
       {/* Reserved Badge */}
       {item.reserved && (
