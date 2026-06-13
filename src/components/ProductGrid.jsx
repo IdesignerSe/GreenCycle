@@ -1,3 +1,4 @@
+// src/components/ProductGrid.jsx
 import ProductCard from "./ProductCard";
 
 export default function ProductGrid({ items = [] }) {
@@ -15,10 +16,11 @@ export default function ProductGrid({ items = [] }) {
         display: "grid",
         gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
         gap: "24px",
+        padding: "8px 0"
       }}
     >
       {items.map((item) => (
-        <ProductCard key={item.id} item={item} />
+        <ProductCard key={item.id} product={item} />
       ))}
     </div>
   );
