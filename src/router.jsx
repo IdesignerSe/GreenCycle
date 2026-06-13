@@ -1,10 +1,11 @@
-import App from "./App";
-import ProductsProvider from "./context/ProductsContext";
+import { BrowserRouter } from "react-router-dom";
+
+const base = import.meta.env.DEV ? "/" : "/GreenCycle/";
 
 export default function AppRouter() {
   return (
-    <ProductsProvider>
-      <App />
-    </ProductsProvider>
+    <BrowserRouter basename={base}>
+      {/* your routes */}
+    </BrowserRouter>
   );
 }
