@@ -1,11 +1,26 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import TakeAway from "./pages/TakeAway";
+import SecondHand from "./pages/SecondHand";
+import ProductDetails from "./pages/ProductDetails";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const base = import.meta.env.DEV ? "/" : "/GreenCycle/";
 
 export default function AppRouter() {
   return (
     <BrowserRouter basename={base}>
-      {/* your routes */}
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/takeaway" element={<TakeAway />} />
+        <Route path="/secondhand" element={<SecondHand />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+      </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
 }
