@@ -3,42 +3,59 @@ import products from "../data/products.json";
 
 export default function Checkout() {
   const { id } = useParams();
-  const product = products.find(p => p.id === id);
+
+  // Ensure ID is a string
+  const product = products.find(p => String(p.id) === String(id));
 
   if (!product) {
     return (
       <section style={{ padding: "24px" }}>
         <h2>Item not found</h2>
-        <Link to="/takeaway">Go back</Link>
+        <p>The item you tried to reserve does not exist.</p>
+        <Link to="/takeaway" style={{ color: "var(--green)" }}>
+          Go back
+        </Link>
       </section>
     );
   }
 
   return (
-    <section className="checkout-container">
+    <section style={{ padding: "24px" }}>
       <h2>Reservation Confirmed</h2>
 
-      <div className="checkout-card">
+      <div style={{
+        display: "flex",
+        gap: "20px",
+        background: "#fafafa",
+        padding: "20px",
+        borderRadius: "12px",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.06)"
+      }}>
         <img
           src={`${import.meta.env.BASE_URL}images/${product.image}`}
           alt={product.title}
-          className="checkout-image"
+          style={{
+            width: "180px",
+            height: "180px",
+            objectFit: "cover",
+            borderRadius: "10px"
+          }}
         />
 
-        <div className="checkout-info">
+        <div>
           <h3>{product.title}</h3>
 
           {product.free ? (
-            <p className="checkout-price free">FREE</p>
+            <p style={{ color: "var(--green)", fontWeight: "600" }}>FREE</p>
           ) : (
-            <p className="checkout-price">{product.price} kr</p>
+            <p style={{ fontWeight: "600" }}>{product.price} kr</p>
           )}
 
-          <p className="checkout-message">
+          <p style={{ marginTop: "12px", color: "#555" }}>
             Your item has been reserved successfully.
           </p>
 
-          <Link to="/takeaway" className="checkout-back">
+          <Link to="/takeaway" style={{ color: "var(--green)", fontWeight: "600" }}>
             Back to items
           </Link>
         </div>
