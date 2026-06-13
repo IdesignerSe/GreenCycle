@@ -368,3 +368,23 @@ body {
   font-size: 14px;
   color: #555;
 }
+
+.article-carousel {
+  margin-top: 40px;
+  text-align: center;        /* centers the title */
+}
+
+.article-carousel h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  text-align: center;        /* ensures centering even if parent changes */
+}
+
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+  justify-content: center;   /* centers the cards inside the track */
+}
