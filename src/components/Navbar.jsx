@@ -25,6 +25,10 @@ export default function Navbar() {
         <NavLink to="/secondhand" className="nav-link">
           SecondHand
         </NavLink>
+
+        <NavLink to="/articles" className="nav-link">
+          Articles & Tips
+        </NavLink>
       </div>
 
       <div className="nav-right">
