@@ -1,21 +1,21 @@
-import ProductGrid from "../components/ProductGrid";
-import useProducts from "../hooks/useProducts";
+import products from "../data/products.json";
+import { getFreeItems } from "../utils/productFilters";
+import ProductCard from "../components/ProductCard";
 
 export default function TakeAway() {
-  const { getFreeItems } = useProducts();
-  const freeItems = getFreeItems();
+  const freeItems = getFreeItems(products);
 
   return (
-    <section style={{ padding: "24px" }}>
-      <h2 style={{ color: "var(--gray-900)", marginBottom: "12px" }}>
-        Free Take‑Away Items
-      </h2>
+    <div className="container">
+      <h1>TakeAway Items</h1>
 
-      <p style={{ color: "var(--gray-700)", marginBottom: "24px" }}>
-        These items are completely free. First come, first served.
-      </p>
+      {freeItems.length === 0 && <p>No free items available.</p>}
 
-      <ProductGrid items={freeItems} />
-    </section>
+      <div className="product-grid">
+        {freeItems.map(item => (
+          <ProductCard key={item.id} product={item} />
+        ))}
+      </div>
+    </div>
   );
 }

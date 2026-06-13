@@ -1,22 +1,21 @@
-import ProductGrid from "../components/ProductGrid";
-import useProducts from "../hooks/useProducts";
+import products from "../data/products.json";
+import { getPaidItems } from "../utils/productFilters";
+import ProductCard from "../components/ProductCard";
 
 export default function SecondHand() {
-  const { getPaidItems } = useProducts();
-  const paidItems = getPaidItems();
+  const paidItems = getPaidItems(products);
 
   return (
-    <section style={{ padding: "24px" }}>
-      <h2 style={{ color: "var(--gray-900)", marginBottom: "12px" }}>
-        Second‑Hand Items for Sale
-      </h2>
+    <div className="container">
+      <h1>SecondHand Items</h1>
 
-      <p style={{ color: "var(--gray-700)", marginBottom: "24px" }}>
-        Affordable pre‑loved items available for reservation.  
-        Login with your alias to reserve an item.
-      </p>
+      {paidItems.length === 0 && <p>No items available.</p>}
 
-      <ProductGrid items={paidItems} />
-    </section>
+      <div className="product-grid">
+        {paidItems.map(item => (
+          <ProductCard key={item.id} product={item} />
+        ))}
+      </div>
+    </div>
   );
 }
