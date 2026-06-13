@@ -1,45 +1,61 @@
-// src/components/ProductCard.jsx
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useProducts from "../hooks/useProducts";
+import useAuth from "../hooks/useAuth";
 
-export default function ProductCard({ product }) {
-  // Prevent crashes if product is missing
-  if (!product) {
-    return (
-      <div className="product-card">
-        <p>Product data missing</p>
-      </div>
-    );
-  }
+export default function ProductCard({ id, title, image, price, free, reserved }) {
+  const navigate = useNavigate();
+  const { updateProduct } = useProducts();
+  const { user } = useAuth();
 
-  const { id, name, price, free, image } = product;
+  const handleReserve = () => {
+    if (!user) {
+      alert("You must be logged in to reserve an item.");
+      navigate("/login");
+      return;
+    }
 
-  // Build image path safely
-  const imageUrl = image
-    ? image.startsWith("http")
-      ? image
-      : `/images/${image}`
-    : "/images/default.png";
+    updateProduct(id, {
+      reserved: true,
+      reservedBy: user.alias,
+    });
+
+    navigate(`/checkout/${id}`);
+  };
 
   return (
     <div className="product-card">
-      <Link to={`/product/${id}`} className="product-link">
+      <Link to={`/product/${id}`}>
         <img
-          src={imageUrl}
-          alt={name}
+          src={`${import.meta.env.BASE_URL}images/${image}`}
+          alt={title}
           className="product-image"
-          onError={(e) => (e.target.src = "/images/default.png")}
         />
-
-        <div className="product-info">
-          <h3 className="product-name">{name}</h3>
-
-          {free ? (
-            <p className="product-free">FREE</p>
-          ) : (
-            <p className="product-price">{price} kr</p>
-          )}
-        </div>
       </Link>
+
+      <h3 className="product-title">{title}</h3>
+
+      {free ? (
+        <p className="product-price free">FREE</p>
+      ) : (
+        <p className="product-price">{price} kr</p>
+      )}
+
+      {reserved && <p className="reserved-badge">RESERVED</p>}
+
+      {/* ⭐ Reserve Button */}
+      <button
+        onClick={handleReserve}
+        disabled={reserved}
+        className="reserve-btn"
+      >
+        {free
+          ? reserved
+            ? "Already Reserved"
+            : "Take Away"
+          : reserved
+            ? "Already Reserved"
+            : "Reserve"}
+      </button>
     </div>
   );
 }

@@ -10,6 +10,7 @@ import TakeAway from "./pages/TakeAway";
 import SecondHand from "./pages/SecondHand";
 import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
+import Checkout from "./pages/Checkout";
 
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -24,8 +25,11 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
 
-          {/* ProductDetails is now PUBLIC */}
+          {/* ProductDetails is PUBLIC */}
           <Route path="/product/:id" element={<ProductDetails />} />
+
+          {/* Checkout is PUBLIC for now */}
+          <Route path="/checkout/:id" element={<Checkout />} />
 
           {/* Protected Routes */}
           <Route

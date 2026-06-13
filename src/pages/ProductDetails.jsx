@@ -34,7 +34,6 @@ export default function ProductDetails() {
     );
   }
 
-  // Reserve logic
   const handleReserve = () => {
     if (!user) {
       alert("You must be logged in to reserve an item.");
@@ -52,7 +51,6 @@ export default function ProductDetails() {
 
   return (
     <section style={{ padding: "24px", maxWidth: "800px", margin: "0 auto" }}>
-      {/* Product Image */}
       <img
         src={`${import.meta.env.BASE_URL}images/${product.image}`}
         alt={product.title}
@@ -68,7 +66,6 @@ export default function ProductDetails() {
         }}
       />
 
-      {/* Title */}
       <h2
         style={{
           marginTop: "20px",
@@ -79,7 +76,6 @@ export default function ProductDetails() {
         {product.title}
       </h2>
 
-      {/* Price or Free */}
       {product.free ? (
         <p style={{ color: "var(--free)", fontWeight: "600", fontSize: "1.2rem" }}>
           FREE
@@ -90,7 +86,6 @@ export default function ProductDetails() {
         </p>
       )}
 
-      {/* Reserved Badge */}
       {product.reserved && (
         <p
           style={{
@@ -103,7 +98,6 @@ export default function ProductDetails() {
         </p>
       )}
 
-      {/* Reserve Button */}
       <button
         onClick={handleReserve}
         disabled={product.reserved}
@@ -130,7 +124,6 @@ export default function ProductDetails() {
             : "Reserve Item"}
       </button>
 
-      {/* Description */}
       <p
         style={{
           marginTop: "16px",
@@ -141,7 +134,6 @@ export default function ProductDetails() {
         {product.description}
       </p>
 
-      {/* Back Button */}
       <Link
         to="/"
         style={{
