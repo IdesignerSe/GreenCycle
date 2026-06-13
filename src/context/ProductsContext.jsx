@@ -1,19 +1,17 @@
-// src/context/ProductsContext.jsx
 import { createContext, useState, useEffect, useContext } from "react";
 import productsData from "../data/products.json";
 
 export const ProductsContext = createContext();
 
 export default function ProductsProvider({ children }) {
-  const [products, setProducts] = useState([]);
+  // FIX: load initial products immediately
+  const [products, setProducts] = useState(productsData);
 
   // Load from localStorage or fallback to JSON
   useEffect(() => {
     const stored = localStorage.getItem("greencycle-products");
     if (stored) {
       setProducts(JSON.parse(stored));
-    } else {
-      setProducts(productsData);
     }
   }, []);
 
@@ -31,7 +29,7 @@ export default function ProductsProvider({ children }) {
   );
 }
 
-// ⭐ THIS is the missing hook that caused your blank page
+// Hook
 export function useProducts() {
   return useContext(ProductsContext);
 }
