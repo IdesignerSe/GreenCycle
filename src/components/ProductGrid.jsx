@@ -11,14 +11,7 @@ export default function ProductGrid({ items = [] }) {
   }
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-        gap: "24px",
-        padding: "8px 0"
-      }}
-    >
+    <div className="product-grid">
       {items.map((item) => (
         <ProductCard key={item.id} product={item} />
       ))}
