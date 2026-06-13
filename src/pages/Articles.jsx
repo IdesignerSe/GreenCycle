@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { articles } from "../data/articles";
 
 export default function Articles() {
@@ -9,14 +10,15 @@ export default function Articles() {
 
       <div className="articles-grid">
         {articles.map(a => (
-          <div key={a.id} className="article-card">
-            <img
-              src={`${base}images/${a.image}`}
-              alt={a.title}
-            />
+          <Link
+            key={a.id}
+            to={`/articles/${a.id}`}
+            className="article-card"
+          >
+            <img src={`${base}images/${a.image}`} alt={a.title} />
             <h3>{a.title}</h3>
             <p>{a.description}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
