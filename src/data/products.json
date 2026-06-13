@@ -6,7 +6,7 @@
     "price": 150,
     "free": false,
     "reserved": false,
-    "image": ""
+    "image": "table_lamp.jpg"
   },
   {
     "id": "2",
@@ -15,7 +15,7 @@
     "price": 120,
     "free": false,
     "reserved": false,
-    "image": ""
+    "image": "lamp.jpg"
   },
   {
     "id": "3",
@@ -24,7 +24,7 @@
     "price": 180,
     "free": false,
     "reserved": false,
-    "image": ""
+    "image": "bookshelf.jpg"
   },
   {
     "id": "4",
@@ -33,7 +33,7 @@
     "price": 220,
     "free": false,
     "reserved": false,
-    "image": ""
+    "image": "office_chair.jpg"
   },
   {
     "id": "5",
@@ -42,7 +42,7 @@
     "price": 60,
     "free": false,
     "reserved": false,
-    "image": ""
+    "image": "ceramic_vase.jpg"
   },
   {
     "id": "6",
@@ -51,7 +51,7 @@
     "price": 140,
     "free": false,
     "reserved": false,
-    "image": ""
+    "image": "wall_mirror.jpg"
   },
   {
     "id": "7",
@@ -60,7 +60,7 @@
     "price": 80,
     "free": false,
     "reserved": false,
-    "image": ""
+    "image": "kitchen_chair.jpg"
   },
   {
     "id": "8",
@@ -69,7 +69,7 @@
     "price": 90,
     "free": false,
     "reserved": false,
-    "image": ""
+    "image": "bluetooth_speaker.jpg"
   },
   {
     "id": "9",
@@ -78,7 +78,7 @@
     "price": 100,
     "free": false,
     "reserved": false,
-    "image": ""
+    "image": "small_rug.jpg"
   },
   {
     "id": "10",
@@ -87,7 +87,7 @@
     "price": 70,
     "free": false,
     "reserved": false,
-    "image": ""
+    "image": "table_lamp.jpg"
   },
 
   {
@@ -97,7 +97,7 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": ""
+    "image": "glass_jars.jpg"
   },
   {
     "id": "12",
@@ -106,7 +106,7 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": ""
+    "image": "plant_pot.jpg"
   },
   {
     "id": "13",
@@ -115,7 +115,7 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": ""
+    "image": "notebook_bundle.jpg"
   },
   {
     "id": "14",
@@ -124,7 +124,7 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": ""
+    "image": "picture_frame.jpg"
   },
   {
     "id": "15",
@@ -133,7 +133,7 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": ""
+    "image": "glass_bowl.jpg"
   },
   {
     "id": "16",
@@ -142,7 +142,7 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": ""
+    "image": "candle_holder.jpg"
   },
   {
     "id": "17",
@@ -151,7 +151,7 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": ""
+    "image": "magazines.jpg"
   },
   {
     "id": "18",
@@ -160,6 +160,6 @@
     "price": 0,
     "free": true,
     "reserved": false,
-    "image": ""
+    "image": "kitchen_utensils.jpg  "
   }
 ]
