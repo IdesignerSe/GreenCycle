@@ -1,52 +1,46 @@
-// src/components/Navbar.jsx
-import { NavLink, useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
-  const handleLogout = () => {
-    logout();
-    navigate("/"); // redirect to home
-  };
+  const toggleMenu = () => setOpen(!open);
+  const closeMenu = () => setOpen(false);
 
   return (
-    <nav className="navbar">
-      <div className="nav-left">
-        <NavLink to="/" className="logo">
-          GreenCycle
-        </NavLink>
+    <>
+      <nav className="navbar">
+        <div className="nav-left">
+          <Link to="/" className="logo" onClick={closeMenu}>
+            GreenCycle
+          </Link>
+        </div>
 
-        <NavLink to="/takeaway" className="nav-link">
-          TakeAway
-        </NavLink>
+        {/* Desktop Menu */}
+        <ul className="nav-menu">
+          <li><Link to="/" className="nav-link" onClick={closeMenu}>Home</Link></li>
+          <li><Link to="/takeaway" className="nav-link" onClick={closeMenu}>TakeAway</Link></li>
+          <li><Link to="/secondhand" className="nav-link" onClick={closeMenu}>SecondHand</Link></li>
+          <li><Link to="/articles" className="nav-link" onClick={closeMenu}>Articles & Tips</Link></li>
+        </ul>
 
-        <NavLink to="/secondhand" className="nav-link">
-          SecondHand
-        </NavLink>
-
-        <NavLink to="/articles" className="nav-link">
-          Articles & Tips
-        </NavLink>
-      </div>
-
-      <div className="nav-right">
-        {!user && (
-          <NavLink to="/login" className="nav-link login-btn">
-            Login
-          </NavLink>
-        )}
-
-        {user && (
-          <div className="user-area">
-            <span className="user-alias">Hi, {user.alias}</span>
-            <button className="logout-btn" onClick={handleLogout}>
-              Logout
-            </button>
+        <div className="nav-right">
+          {/* Hamburger Icon */}
+          <div className="hamburger" onClick={toggleMenu}>
+            <div className={open ? "bar bar1 open" : "bar bar1"}></div>
+            <div className={open ? "bar bar2 open" : "bar bar2"}></div>
+            <div className={open ? "bar bar3 open" : "bar bar3"}></div>
           </div>
-        )}
+        </div>
+      </nav>
+
+      {/* Mobile Slide-in Menu */}
+      <div className={open ? "mobile-menu open" : "mobile-menu"}>
+        <Link to="/" onClick={closeMenu}>Home</Link>
+        <Link to="/takeaway" onClick={closeMenu}>TakeAway</Link>
+        <Link to="/secondhand" onClick={closeMenu}>SecondHand</Link>
+        <Link to="/articles" onClick={closeMenu}>Articles & Tips</Link>
       </div>
-    </nav>
+    </>
   );
 }
