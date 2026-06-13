@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import TakeAway from "./pages/TakeAway";
 import SecondHand from "./pages/SecondHand";
 import ProductDetails from "./pages/ProductDetails";
+import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -18,6 +19,8 @@ export default function AppRouter() {
         <Route path="/takeaway" element={<TakeAway />} />
         <Route path="/secondhand" element={<SecondHand />} />
         <Route path="/product/:id" element={<ProductDetails />} />
+
+        <Route path="/checkout/:id" element={<Checkout />} />
       </Routes>
 
       <Footer />
