@@ -241,3 +241,78 @@ body {
   font-weight: bold;
   color: var(--green-700);
 }
+
+.reserve-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background: #e0e0e0;          /* soft gray */
+  color: #333;                  /* dark text */
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.reserve-btn:hover:not(:disabled) {
+  background: var(--green);     /* your theme green */
+  color: green ;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.reserve-btn:disabled {
+  background: #c7c7c7;          /* lighter gray */
+  color: #777;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.checkout-container {
+  padding: 24px;
+}
+
+.checkout-card {
+  display: flex;
+  gap: 20px;
+  background: #fafafa;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.checkout-image {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.checkout-info h3 {
+  margin: 0 0 10px;
+}
+
+.checkout-price {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.checkout-price.free {
+  color: var(--green);
+}
+
+.checkout-message {
+  margin: 12px 0;
+  color: #555;
+}
+
+.checkout-back {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--green);
+  font-weight: 600;
+}
