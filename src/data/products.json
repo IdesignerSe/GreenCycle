@@ -8,6 +8,7 @@
     "free": false,
     "reserved": false,
     "reservedBy": "",
+    "type": "both",
     "image": "table.jpg"
   },
   {
@@ -19,6 +20,7 @@
     "free": false,
     "reserved": false,
     "reservedBy": "",
+    "type": "both",   
     "image": "lamp.jpg"
   },
   {
@@ -30,6 +32,7 @@
     "free": false,
     "reserved": false,
     "reservedBy": "",
+    "type": "both",
     "image": "bookshelf.jpg"
   },
   {
@@ -41,6 +44,7 @@
     "free": false,
     "reserved": false,
     "reservedBy": "",
+    "type": "both", 
     "image": "chair1.jpg"
   },
   {
@@ -52,6 +56,7 @@
     "free": false,
     "reserved": false,
     "reservedBy": "",
+    "type": "both",
     "image": "vase.jpg"
   },
   {
@@ -63,6 +68,7 @@
     "free": false,
     "reserved": false,
     "reservedBy": "",
+    "type": "both", 
     "image": "mirror.jpg"
   },
   {
@@ -74,6 +80,7 @@
     "free": false,
     "reserved": false,
     "reservedBy": "",
+    "type": "both",
     "image": "chair2.jpg"
   },
   {
@@ -85,6 +92,7 @@
     "free": false,
     "reserved": false,
     "reservedBy": "",
+    "type": "both", 
     "image": "speaker.jpg"
   },
   {
@@ -96,6 +104,7 @@
     "free": false,
     "reserved": false,
     "reservedBy": "",
+    "type": "both",
     "image": "rug.jpg"
   },
   {
@@ -107,6 +116,7 @@
     "free": false,
     "reserved": false,
     "reservedBy": "",
+    "type": "both", 
     "image": "lamp2.jpg"
   },
   {
@@ -118,6 +128,7 @@
     "free": true,
     "reserved": false,
     "reservedBy": "",
+    "type": "both",
     "image": "storage.jpg"
   },
   {
@@ -129,6 +140,7 @@
     "free": true,
     "reserved": false,
     "reservedBy": "",
+    "type": "both", 
     "image": "plant.jpg"
   },
   {
@@ -140,6 +152,7 @@
     "free": true,
     "reserved": false,
     "reservedBy": "",
+    "type": "both",
     "image": "books.jpg"
   },
   {
@@ -151,6 +164,7 @@
     "free": true,
     "reserved": false,
     "reservedBy": "",
+    "type": "both", 
     "image": "frame.jpg"
   },
   {
@@ -162,6 +176,7 @@
     "free": true,
     "reserved": false,
     "reservedBy": "",
+    "type": "both",
     "image": "bowl.jpg"
   },
   {
@@ -173,6 +188,7 @@
     "free": true,
     "reserved": false,
     "reservedBy": "",
+    "type": "both", 
     "image": "candle.jpg"
   },
   {
@@ -184,6 +200,7 @@
     "free": true,
     "reserved": false,
     "reservedBy": "",
+    "type": "both",
     "image": "magazines.jpg"
   },
   {
@@ -195,6 +212,7 @@
     "free": true,
     "reserved": false,
     "reservedBy": "",
+    "type": "both",   
     "image": "utensils.jpg"
   }
 ]
