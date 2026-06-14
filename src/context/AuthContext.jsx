@@ -20,6 +20,7 @@ export default function AuthProvider({ children }) {
 
   const login = (alias, email) => {
     setUser({ alias, email });
+    return { success: true };
   };
 
   const logout = () => {
@@ -28,7 +29,7 @@ export default function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

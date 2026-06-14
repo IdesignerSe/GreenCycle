@@ -11,22 +11,27 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
 
-const result = login(alias, email);
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-if (!result.success) {
-  setError("Invalid alias or email");
-  return;
-}
+    if (!alias.trim() || !email.trim()) {
+      setError("Both fields are required.");
+      return;
+    }
 
+    const result = login(alias, email);
 
-    login(alias, email);
+    if (!result.success) {
+      setError("Invalid alias or email");
+      return;
+    }
 
     // Read redirect parameter from URL
     const params = new URLSearchParams(window.location.search);
     const redirect = params.get("redirect");
 
     // Go back to the page user originally wanted
-    navigate(redirect || "/");
+    navigate(redirect || "/takeaway");
   };
 
   return (
