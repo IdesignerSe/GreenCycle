@@ -9,12 +9,20 @@ export default function ProductDetails() {
   const { getProduct, updateProduct } = useProducts();
   const { user } = useAuth();
 
-  const product = getProduct(Number(id));
+  // ✅ normalize ID ONCE (critical fix)
+  const productId = Number(id);
+
+  const product = getProduct(productId);
+
+  // 🔍 Debug (keep for now)
+  console.log("PRODUCT ID:", productId);
+  console.log("PRODUCT FOUND:", product);
 
   if (!product) {
     return (
       <section style={{ padding: "24px", textAlign: "center" }}>
         <h2 style={{ color: "var(--gray-900)" }}>Product not found.</h2>
+
         <Link
           to="/"
           style={{
@@ -41,12 +49,35 @@ export default function ProductDetails() {
       return;
     }
 
-    updateProduct(id, {
+    const reservedAt = Date.now();
+    const expiresAt = reservedAt + 15 * 60 * 1000;
+
+    const reservation = {
+      productId: productId,
+      title: product.title,
+      image: product.image,
+      price: product.price,
+      free: product.free,
+      alias: user.alias,
+      email: user.email,
+      mode: product.free ? "Take Away" : "Reservation",
+      reservedAt,
+      expiresAt,
+    };
+
+    // save reservation
+    localStorage.setItem(
+      `reservation-${productId}`,
+      JSON.stringify(reservation)
+    );
+
+    // update state (IMPORTANT: use NUMBER)
+    updateProduct(productId, {
       reserved: true,
       reservedBy: user.alias,
     });
 
-    navigate(`/checkout/${id}`);
+    navigate(`/checkout/${productId}`);
   };
 
   return (
