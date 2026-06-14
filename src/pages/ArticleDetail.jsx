@@ -16,14 +16,15 @@ export default function ArticleDetail() {
   }
 
   const handleReserve = () => {
+    console.log("HANDLE RESERVE FIRED");
+
     if (!user) {
-      // Redirect to login if not logged in
       navigate(`/login?redirect=/articles/${id}`);
       return;
     }
 
     const reservedAt = Date.now();
-    const expiresAt = reservedAt + 15 * 60 * 1000; // +15 minutes
+    const expiresAt = reservedAt + 15 * 60 * 1000;
 
     const reservation = {
       articleId: article.id,
@@ -34,10 +35,8 @@ export default function ArticleDetail() {
       expiresAt
     };
 
-    // Save reservation
     localStorage.setItem(`reservation-${article.id}`, JSON.stringify(reservation));
 
-    // Redirect to checkout
     navigate(`/checkout/${article.id}`);
   };
 
@@ -55,7 +54,14 @@ export default function ArticleDetail() {
         {article.content}
       </p>
 
-      <button className="reserve-btn" onClick={handleReserve}>
+      {/* STEP 4: Debug button */}
+      <button
+        className="reserve-btn"
+        onClick={() => {
+          console.log("BUTTON CLICKED");
+          handleReserve();
+        }}
+      >
         Reserve for 15 minutes
       </button>
     </section>
