@@ -30,8 +30,28 @@ export default function Checkout() {
     <section style={{ padding: "24px" }}>
       <h2>Reservation Confirmed</h2>
 
-      {/* ✅ Everything comes from reservation now */}
-      <h3>Item ID: {id}</h3>
+      {/* PRODUCT INFO (from snapshot) */}
+      <h3>{reservation.title}</h3>
+
+      <img
+        src={`${import.meta.env.BASE_URL}images/${reservation.image}`}
+        alt={reservation.title}
+        style={{
+          width: "250px",
+          borderRadius: "8px",
+          marginBottom: "16px",
+        }}
+      />
+
+      <p>
+        <strong>
+          {reservation.free
+            ? "FREE"
+            : `${reservation.price} kr`}
+        </strong>
+      </p>
+
+      <p>Your item has been reserved successfully.</p>
 
       <p>
         <strong>Reserved by:</strong> {reservation.alias} (
@@ -43,11 +63,13 @@ export default function Checkout() {
       </p>
 
       <p>
-        <strong>Time:</strong> {reservedAtDate.toLocaleString()}
+        <strong>Time:</strong>{" "}
+        {reservedAtDate.toLocaleString()}
       </p>
 
       <p>
-        <strong>Expires at:</strong> {expiresAtDate.toLocaleString()}
+        <strong>Expires at:</strong>{" "}
+        {expiresAtDate.toLocaleString()}
       </p>
 
       <br />
