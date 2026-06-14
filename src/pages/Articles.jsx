@@ -18,6 +18,7 @@ export default function Articles() {
             <img src={`${base}images/${a.image}`} alt={a.title} />
             <h3>{a.title}</h3>
             <p>{a.description}</p>
+            
           </Link>
         ))}
       </div>

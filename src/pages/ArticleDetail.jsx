@@ -34,7 +34,10 @@ export default function ArticleDetail() {
       <p style={{ marginTop: "12px", lineHeight: "1.6" }}>
         {article.description}
       </p>
-
+      <p style={{ marginTop: "12px", lineHeight: "1.6" }}>
+        {article.content}
+      </p>
+      
       <Link
         to="/articles"
         style={{
