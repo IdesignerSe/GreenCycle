@@ -1,29 +1,28 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 import productsData from "../data/products.json";
 
 export const ProductsContext = createContext();
 
 export default function ProductsProvider({ children }) {
-  // FIX: load initial products immediately
-  const [products, setProducts] = useState(productsData);
-
-  // Load from localStorage or fallback to JSON
-  useEffect(() => {
+  // ✅ Initialize ONCE (no useEffect needed)
+  const [products, setProducts] = useState(() => {
     const stored = localStorage.getItem("greencycle-products");
-    if (stored) {
-      setProducts(JSON.parse(stored));
-    }
-  }, []);
+    return stored ? JSON.parse(stored) : productsData;
+  });
 
   // Save to localStorage whenever products change
-  useEffect(() => {
-    if (products.length > 0) {
-      localStorage.setItem("greencycle-products", JSON.stringify(products));
-    }
-  }, [products]);
+  const updateProducts = (newProducts) => {
+    setProducts(newProducts);
+    localStorage.setItem("greencycle-products", JSON.stringify(newProducts));
+  };
 
   return (
-    <ProductsContext.Provider value={{ products, setProducts }}>
+    <ProductsContext.Provider
+      value={{
+        products,
+        setProducts: updateProducts,
+      }}
+    >
       {children}
     </ProductsContext.Provider>
   );
