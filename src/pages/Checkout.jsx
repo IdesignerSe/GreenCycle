@@ -1,79 +1,64 @@
-import { useParams, Link, useLocation } from "react-router-dom";
-import products from "../data/products.json";
-import useAuth from "../hooks/useAuth";
+// src/pages/Checkout.jsx
+import { useParams, Link } from "react-router-dom";
+import { articles } from "../data/articles";
 
 export default function Checkout() {
   const { id } = useParams();
-  const { user } = useAuth();
+  const article = articles.find(a => a.id === Number(id));
 
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const mode = params.get("mode");
+  if (!article) {
+    return <p>Item not found.</p>;
+  }
 
-  const product = products.find(p => String(p.id) === String(id));
+  // Load reservation from localStorage
+  const reservation = JSON.parse(
+    localStorage.getItem(`reservation-${id}`)
+  );
 
-  if (!product) {
+  if (!reservation) {
     return (
       <section style={{ padding: "24px" }}>
-        <h2>Item not found</h2>
-        <p>The item you tried to reserve does not exist.</p>
-        <Link to="/takeaway" style={{ color: "var(--green)" }}>
-          Go back
-        </Link>
+        <h2>No reservation found</h2>
+        <Link to="/articles">Back to items</Link>
       </section>
     );
   }
+
+  // Convert timestamps
+  const reservedAtDate = new Date(reservation.reservedAt);
+  const expiresAtDate = new Date(reservation.expiresAt);
 
   return (
     <section style={{ padding: "24px" }}>
       <h2>Reservation Confirmed</h2>
 
-      <div style={{
-        display: "flex",
-        gap: "20px",
-        background: "#fafafa",
-        padding: "20px",
-        borderRadius: "12px",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.06)"
-      }}>
-        <img
-          src={`${import.meta.env.BASE_URL}images/${product.image}`}
-          alt={product.title}
-          style={{
-            width: "180px",
-            height: "180px",
-            objectFit: "cover",
-            borderRadius: "10px"
-          }}
-        />
+      <h3>{article.title}</h3>
 
-        <div>
-          <h3>{product.title}</h3>
+      <img
+        src={`${import.meta.env.BASE_URL}images/${article.image}`}
+        alt={article.title}
+        style={{ width: "250px", borderRadius: "8px", marginBottom: "16px" }}
+      />
 
-          {product.free ? (
-            <p style={{ color: "var(--green)", fontWeight: "600" }}>FREE</p>
-          ) : (
-            <p style={{ fontWeight: "600" }}>{product.price} kr</p>
-          )}
+      <p><strong>FREE</strong></p>
 
-          <p style={{ marginTop: "12px", color: "#555" }}>
-            Your item has been reserved successfully.
-          </p>
+      <p>Your item has been reserved successfully.</p>
 
-          {user && (
-            <div style={{ marginTop: "12px", color: "#333" }}>
-              <p><strong>Reserved by:</strong> {user.alias} ({user.email})</p>
-              <p><strong>Mode:</strong> {mode === "takeaway" ? "Take Away" : "Reservation"}</p>
-              <p><strong>Item:</strong> {product.title}</p>
-              <p><strong>Time:</strong> {new Date().toLocaleString()}</p>
-            </div>
-          )}
+      <p><strong>Reserved by:</strong> {reservation.alias} ({reservation.email})</p>
 
-          <Link to="/takeaway" style={{ color: "var(--green)", fontWeight: "600" }}>
-            Back to items
-          </Link>
-        </div>
-      </div>
+      <p><strong>Mode:</strong> {reservation.mode}</p>
+
+      <p><strong>Item:</strong> {article.title}</p>
+
+      <p><strong>Time:</strong> {reservedAtDate.toLocaleString()}</p>
+
+      <p><strong>Time reserved expires at:</strong> {expiresAtDate.toLocaleString()}</p>
+
+      <br />
+
+      <Link to="/articles" className="back-btn">
+        Back to items
+      </Link>
     </section>
   );
 }
