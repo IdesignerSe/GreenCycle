@@ -9,7 +9,7 @@ export default function ProductDetails() {
   const { getProduct, updateProduct } = useProducts();
   const { user } = useAuth();
 
-  const product = getProduct(id);
+  const product = getProduct(Number(id));
 
   if (!product) {
     return (
