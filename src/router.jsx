@@ -10,11 +10,9 @@ import ArticleDetail from "./pages/ArticleDetail";
 import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 
-const base = import.meta.env.DEV ? "/" : "/GreenCycle/";
-
 export default function AppRouter() {
   return (
-    <BrowserRouter basename={base}>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
