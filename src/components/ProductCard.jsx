@@ -18,7 +18,12 @@ export default function ProductCard({ item }) {
     const expiresAt = reservedAt + 15 * 60 * 1000;
 
     const reservation = {
-      articleId: item.id,
+      productId: item.id,
+      title: item.title,
+      image: item.image,
+      price: item.price,
+      free: item.free,
+
       alias: user.alias,
       email: user.email,
       mode: item.free ? "Take Away" : "Reservation",
@@ -70,8 +75,8 @@ export default function ProductCard({ item }) {
             ? "Already Reserved"
             : "Take Away"
           : item.reserved
-          ? "Already Reserved"
-          : "Reserve"}
+            ? "Already Reserved"
+            : "Reserve"}
       </button>
     </div>
   );
