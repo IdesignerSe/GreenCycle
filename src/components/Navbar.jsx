@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth"; // make sure this path is correct
+import useAuth from "../hooks/useAuth";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const { user, logout } = useAuth(); // get alias + email + logout
+  const { user, logout } = useAuth();
 
   const toggleMenu = () => setOpen(!open);
   const closeMenu = () => setOpen(false);
@@ -28,13 +28,15 @@ export default function Navbar() {
 
         <div className="nav-right">
 
-          {/* USER AREA (DESKTOP ONLY) */}
+          {/* USER AREA (DESKTOP) */}
           <div className="user-area">
-            {user && <span className="alias">{user.alias}</span>}
-            {user && (
-              <button className="logout-btn" onClick={logout}>
-                Logout
-              </button>
+            {user ? (
+              <>
+                <span className="alias">{user.alias}</span>
+                <button className="logout-btn" onClick={logout}>Logout</button>
+              </>
+            ) : (
+              <Link to="/login" className="login-btn">Login</Link>
             )}
           </div>
 
@@ -54,14 +56,22 @@ export default function Navbar() {
         <Link to="/secondhand" onClick={closeMenu}>SecondHand</Link>
         <Link to="/articles" onClick={closeMenu}>Articles & Tips</Link>
 
-        {/* USER AREA (MOBILE VERSION) */}
-        {user && (
+        {/* USER AREA (MOBILE) */}
+        {user ? (
           <div className="mobile-user">
             <p className="alias">{user.alias}</p>
-            <button className="logout-btn" onClick={() => { logout(); closeMenu(); }}>
+            <button
+              className="logout-btn"
+              onClick={() => {
+                logout();
+                closeMenu();
+              }}
+            >
               Logout
             </button>
           </div>
+        ) : (
+          <Link to="/login" onClick={closeMenu}>Login</Link>
         )}
       </div>
     </>

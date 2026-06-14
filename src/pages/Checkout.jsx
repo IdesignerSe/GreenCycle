@@ -1,10 +1,15 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import products from "../data/products.json";
+import useAuth from "../hooks/useAuth";
 
 export default function Checkout() {
   const { id } = useParams();
+  const { user } = useAuth();
 
-  // Ensure ID is a string
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const mode = params.get("mode");
+
   const product = products.find(p => String(p.id) === String(id));
 
   if (!product) {
@@ -54,6 +59,15 @@ export default function Checkout() {
           <p style={{ marginTop: "12px", color: "#555" }}>
             Your item has been reserved successfully.
           </p>
+
+          {user && (
+            <div style={{ marginTop: "12px", color: "#333" }}>
+              <p><strong>Reserved by:</strong> {user.alias} ({user.email})</p>
+              <p><strong>Mode:</strong> {mode === "takeaway" ? "Take Away" : "Reservation"}</p>
+              <p><strong>Item:</strong> {product.title}</p>
+              <p><strong>Time:</strong> {new Date().toLocaleString()}</p>
+            </div>
+          )}
 
           <Link to="/takeaway" style={{ color: "var(--green)", fontWeight: "600" }}>
             Back to items
