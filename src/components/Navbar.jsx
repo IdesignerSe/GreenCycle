@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth"; // make sure this path is correct
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { user, logout } = useAuth(); // get alias + email + logout
 
   const toggleMenu = () => setOpen(!open);
   const closeMenu = () => setOpen(false);
@@ -25,6 +27,17 @@ export default function Navbar() {
         </ul>
 
         <div className="nav-right">
+
+          {/* USER AREA (DESKTOP ONLY) */}
+          <div className="user-area">
+            {user && <span className="alias">{user.alias}</span>}
+            {user && (
+              <button className="logout-btn" onClick={logout}>
+                Logout
+              </button>
+            )}
+          </div>
+
           {/* Hamburger Icon */}
           <div className="hamburger" onClick={toggleMenu}>
             <div className={open ? "bar bar1 open" : "bar bar1"}></div>
@@ -40,6 +53,16 @@ export default function Navbar() {
         <Link to="/takeaway" onClick={closeMenu}>TakeAway</Link>
         <Link to="/secondhand" onClick={closeMenu}>SecondHand</Link>
         <Link to="/articles" onClick={closeMenu}>Articles & Tips</Link>
+
+        {/* USER AREA (MOBILE VERSION) */}
+        {user && (
+          <div className="mobile-user">
+            <p className="alias">{user.alias}</p>
+            <button className="logout-btn" onClick={() => { logout(); closeMenu(); }}>
+              Logout
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
