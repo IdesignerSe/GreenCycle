@@ -14,6 +14,24 @@ export default function ProductCard({ item }) {
       return;
     }
 
+    const reservedAt = Date.now();
+    const expiresAt = reservedAt + 15 * 60 * 1000;
+
+    const reservation = {
+      articleId: item.id,
+      alias: user.alias,
+      email: user.email,
+      mode: item.free ? "Take Away" : "Reservation",
+      reservedAt,
+      expiresAt,
+    };
+
+    // ✅ IMPORTANT: Save reservation for Checkout page
+    localStorage.setItem(
+      `reservation-${item.id}`,
+      JSON.stringify(reservation)
+    );
+
     updateProduct(item.id, {
       reserved: true,
       reservedBy: user.alias,
@@ -52,8 +70,8 @@ export default function ProductCard({ item }) {
             ? "Already Reserved"
             : "Take Away"
           : item.reserved
-            ? "Already Reserved"
-            : "Reserve"}
+          ? "Already Reserved"
+          : "Reserve"}
       </button>
     </div>
   );

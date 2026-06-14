@@ -6,14 +6,16 @@ export default function useProducts() {
 
   // Get a single product by ID
   const getProduct = (id) => {
-    return products.find((item) => item.id === id);
+    return products.find((item) => item.id === Number(id));
   };
 
   // Update a product (price, free, reserved, image, etc.)
   const updateProduct = (id, updatedFields) => {
     setProducts((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, ...updatedFields } : item
+        item.id === Number(id)
+          ? { ...item, ...updatedFields }
+          : item
       )
     );
   };
@@ -25,7 +27,9 @@ export default function useProducts() {
 
   // Delete a product (Admin)
   const deleteProduct = (id) => {
-    setProducts((prev) => prev.filter((item) => item.id !== id));
+    setProducts((prev) =>
+      prev.filter((item) => item.id !== Number(id))
+    );
   };
 
   // Filter: free items only
@@ -46,6 +50,6 @@ export default function useProducts() {
     addProduct,
     deleteProduct,
     getFreeItems,
-    getPaidItems
+    getPaidItems,
   };
 }

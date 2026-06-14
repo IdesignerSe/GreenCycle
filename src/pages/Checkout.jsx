@@ -1,27 +1,30 @@
 import { useParams, Link } from "react-router-dom";
-import { articles } from "../data/articles";
+import useProducts from "../hooks/useProducts";
 
 export default function Checkout() {
   const { id } = useParams();
+  const { getProduct } = useProducts();
 
-  console.log("Checkout ID:", id);
-  console.log("Looking for key:", `reservation-${id}`);
-  console.log("LocalStorage keys:", Object.keys(localStorage));
+  const product = getProduct(id);
 
   const reservation = JSON.parse(
     localStorage.getItem(`reservation-${id}`)
   );
 
+  console.log("Checkout ID:", id);
+  console.log("Looking for key:", `reservation-${id}`);
+  console.log("LocalStorage keys:", Object.keys(localStorage));
+
   if (!reservation) {
     return (
       <section style={{ padding: "24px" }}>
         <h2>No reservation found</h2>
-        <Link to="/articles">Back to items</Link>
+        <Link to="/" className="back-btn">
+          Back to items
+        </Link>
       </section>
     );
   }
-
-  const article = articles.find(a => a.id === Number(id));
 
   const reservedAtDate = new Date(reservation.reservedAt);
   const expiresAtDate = new Date(reservation.expiresAt);
@@ -30,31 +33,58 @@ export default function Checkout() {
     <section style={{ padding: "24px" }}>
       <h2>Reservation Confirmed</h2>
 
-      {article && (
+      {product && (
         <>
-          <h3>{article.title}</h3>
+          <h3>{product.title}</h3>
+
           <img
-            src={`${import.meta.env.BASE_URL}images/${article.image}`}
-            alt={article.title}
-            style={{ width: "250px", borderRadius: "8px", marginBottom: "16px" }}
+            src={`${import.meta.env.BASE_URL}images/${product.image}`}
+            alt={product.title}
+            style={{
+              width: "250px",
+              borderRadius: "8px",
+              marginBottom: "16px",
+            }}
           />
-          <p><strong>FREE</strong></p>
+
+          <p>
+            <strong>
+              {product.free ? "FREE" : `${product.price} kr`}
+            </strong>
+          </p>
         </>
       )}
 
       <p>Your item has been reserved successfully.</p>
 
-      <p><strong>Reserved by:</strong> {reservation.alias} ({reservation.email})</p>
-      <p><strong>Mode:</strong> {reservation.mode}</p>
+      <p>
+        <strong>Reserved by:</strong> {reservation.alias} (
+        {reservation.email})
+      </p>
 
-      {article && <p><strong>Item:</strong> {article.title}</p>}
+      <p>
+        <strong>Mode:</strong> {reservation.mode}
+      </p>
 
-      <p><strong>Time:</strong> {reservedAtDate.toLocaleString()}</p>
-      <p><strong>Time reserved expires at:</strong> {expiresAtDate.toLocaleString()}</p>
+      {product && (
+        <p>
+          <strong>Item:</strong> {product.title}
+        </p>
+      )}
+
+      <p>
+        <strong>Time:</strong>{" "}
+        {reservedAtDate.toLocaleString()}
+      </p>
+
+      <p>
+        <strong>Expires at:</strong>{" "}
+        {expiresAtDate.toLocaleString()}
+      </p>
 
       <br />
 
-      <Link to="/articles" className="back-btn">
+      <Link to="/" className="back-btn">
         Back to items
       </Link>
     </section>
