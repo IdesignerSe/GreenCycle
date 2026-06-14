@@ -1,175 +1,42 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
-import useProducts from "../hooks/useProducts";
-import useAuth from "../hooks/useAuth";
+import { useParams, Link } from "react-router-dom";
+import { articles } from "../data/articles";
 
-export default function ProductDetails() {
+export default function ArticleDetail() {
   const { id } = useParams();
-  const navigate = useNavigate();
 
-  const { getProduct, updateProduct } = useProducts();
-  const { user } = useAuth();
+  const article = articles.find(a => a.id === Number(id));
 
-  const product = getProduct(id);
-
-  if (!product) {
+  if (!article) {
     return (
       <section style={{ padding: "24px", textAlign: "center" }}>
-        <h2 style={{ color: "var(--gray-900)" }}>Product not found.</h2>
+        <h2>Article not found.</h2>
 
-        <Link
-          to="/"
-          style={{
-            display: "inline-block",
-            marginTop: "16px",
-            background: "var(--green)",
-            color: "white",
-            padding: "10px 16px",
-            borderRadius: "8px",
-            textDecoration: "none",
-            fontWeight: "500",
-          }}
-        >
-          Back to Home
-        </Link>
+        <Link to="/articles">Back to Articles</Link>
       </section>
     );
   }
 
-  const handleReserve = () => {
-    if (!user) {
-      alert("You must be logged in to reserve an item.");
-      navigate("/login");
-      return;
-    }
-
-    const reservedAt = Date.now();
-    const expiresAt = reservedAt + 15 * 60 * 1000;
-
-    const reservation = {
-      articleId: Number(id),
-      alias: user.alias,
-      email: user.email,
-      mode: product.free ? "Take Away" : "Reservation",
-      reservedAt,
-      expiresAt,
-    };
-
-    // Save reservation to localStorage for Checkout page
-    localStorage.setItem(
-      `reservation-${id}`,
-      JSON.stringify(reservation)
-    );
-
-    // Update product state
-    updateProduct(id, {
-      reserved: true,
-      reservedBy: user.alias,
-    });
-
-    navigate(`/checkout/${id}`);
-  };
-
   return (
     <section style={{ padding: "24px", maxWidth: "800px", margin: "0 auto" }}>
       <img
-        src={`${import.meta.env.BASE_URL}images/${product.image}`}
-        alt={product.title}
-        onError={(e) => {
-          e.target.src = `${import.meta.env.BASE_URL}images/placeholder.jpg`;
-        }}
+        src={`${import.meta.env.BASE_URL}images/${article.image}`}
+        alt={article.title}
         style={{
           width: "100%",
           height: "320px",
           objectFit: "cover",
-          borderRadius: "var(--radius)",
-          boxShadow: "var(--shadow)",
+          borderRadius: "8px",
         }}
       />
 
-      <h2
-        style={{
-          marginTop: "20px",
-          color: "var(--gray-900)",
-          fontSize: "1.8rem",
-        }}
-      >
-        {product.title}
-      </h2>
+      <h1 style={{ marginTop: "20px" }}>{article.title}</h1>
 
-      {product.free ? (
-        <p
-          style={{
-            color: "var(--free)",
-            fontWeight: "600",
-            fontSize: "1.2rem",
-          }}
-        >
-          FREE
-        </p>
-      ) : (
-        <p
-          style={{
-            color: "var(--green)",
-            fontWeight: "600",
-            fontSize: "1.2rem",
-          }}
-        >
-          {product.price} kr
-        </p>
-      )}
-
-      {product.reserved && (
-        <p
-          style={{
-            color: "var(--reserved)",
-            fontWeight: "600",
-            marginTop: "4px",
-          }}
-        >
-          RESERVED
-        </p>
-      )}
-
-      <button
-        onClick={handleReserve}
-        disabled={product.reserved}
-        style={{
-          marginTop: "24px",
-          width: "100%",
-          padding: "12px",
-          background: product.reserved
-            ? "var(--gray-400)"
-            : "var(--green)",
-          color: "white",
-          border: "none",
-          borderRadius: "8px",
-          fontSize: "16px",
-          fontWeight: "500",
-          cursor: product.reserved ? "not-allowed" : "pointer",
-          boxShadow: "var(--shadow)",
-        }}
-      >
-        {product.free
-          ? product.reserved
-            ? "Already Reserved"
-            : "Take Away"
-          : product.reserved
-            ? "Already Reserved"
-            : "Reserve Item"}
-      </button>
-
-      <p
-        style={{
-          marginTop: "16px",
-          color: "var(--gray-700)",
-          lineHeight: "1.6",
-        }}
-      >
-        {product.description}
+      <p style={{ marginTop: "12px", lineHeight: "1.6" }}>
+        {article.description}
       </p>
 
       <Link
-        to="/"
+        to="/articles"
         style={{
           display: "inline-block",
           marginTop: "24px",
@@ -178,11 +45,9 @@ export default function ProductDetails() {
           padding: "10px 16px",
           borderRadius: "8px",
           textDecoration: "none",
-          fontWeight: "500",
-          boxShadow: "var(--shadow)",
         }}
       >
-        Back to Home
+        Back to Articles
       </Link>
     </section>
   );
