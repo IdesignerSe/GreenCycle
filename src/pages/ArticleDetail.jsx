@@ -1,3 +1,4 @@
+// src/pages/ArticleDetail.jsx
 import { useParams, useNavigate } from "react-router-dom";
 import { articles } from "../data/articles";
 import useAuth from "../hooks/useAuth";
@@ -6,8 +7,9 @@ export default function ArticleDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
-  const article = articles.find(a => a.id === Number(id));
   const base = import.meta.env.BASE_URL;
+
+  const article = articles.find(a => a.id === Number(id));
 
   if (!article) {
     return <p>Article not found.</p>;
@@ -15,7 +17,7 @@ export default function ArticleDetail() {
 
   const handleReserve = () => {
     if (!user) {
-      // If not logged in → redirect to login with redirect back
+      // Redirect to login if not logged in
       navigate(`/login?redirect=/articles/${id}`);
       return;
     }
@@ -32,8 +34,10 @@ export default function ArticleDetail() {
       expiresAt
     };
 
+    // Save reservation
     localStorage.setItem(`reservation-${article.id}`, JSON.stringify(reservation));
 
+    // Redirect to checkout
     navigate(`/checkout/${article.id}`);
   };
 
