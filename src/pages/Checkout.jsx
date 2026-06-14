@@ -7,6 +7,9 @@ export default function Checkout() {
 
   const product = getProduct(id);
 
+  console.log("IMAGE PATH:", `${import.meta.env.BASE_URL}images/${product?.image}`);
+  console.log("PRODUCT IMAGE VALUE:", product?.image);
+
   const reservation = JSON.parse(
     localStorage.getItem(`reservation-${id}`)
   );
