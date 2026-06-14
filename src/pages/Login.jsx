@@ -11,13 +11,13 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const result = login(alias, email);
 
-    if (!alias.trim() || !email.trim()) {
-      setError("Both fields are required.");
-      return;
-    }
+if (!result.success) {
+  setError("Invalid alias or email");
+  return;
+}
+
 
     login(alias, email);
 
